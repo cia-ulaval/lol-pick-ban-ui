@@ -1,17 +1,17 @@
 {
   "frontend": {
-    "scoreEnabled": true,
+    "scoreEnabled": false,
     "spellsEnabled": true,
-    "coachesEnabled": true,
+    "coachesEnabled": false,
     "blueTeam": {
-      "name": "Team Blue",
-      "score": 2,
+      "name": "",
+      "score": 0,
       "coach": "Coach Blue",
       "color": "rgb(0,151,196)"
     },
     "redTeam": {
-      "name": "Team Red",
-      "score": 1,
+      "name": "",
+      "score": 0,
       "coach": "Coach Red",
       "color": "rgb(222,40,70)"
     },

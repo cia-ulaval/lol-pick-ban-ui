@@ -1,1 +1,1 @@
-yarn start --data recordings/tournament-draft
+npm start --data recordings/tournament-draft
