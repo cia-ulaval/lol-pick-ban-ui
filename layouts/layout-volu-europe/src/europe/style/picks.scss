@@ -52,10 +52,10 @@
       height: calc(100% - var(--pick-name-height));
 
       img {
-        width: calc(100% + calc(5 * var(--pick-image-crop)));
+        width: calc(100% + calc(-1 * var(--pick-image-crop)));
         height: 100%;
         object-fit: cover;
-        object-position: calc(1 * var(--pick-image-crop)) calc(-45 * var(--pick-image-crop));
+        object-position: calc(1 * var(--pick-image-crop)) calc(-2 * var(--pick-image-crop));
       }
 
       &.Active::before {

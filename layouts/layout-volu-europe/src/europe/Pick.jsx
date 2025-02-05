@@ -12,7 +12,7 @@ const Pick = props => (
         <div className={cx(css.PickImage, {
             [css.Active]: props.isActive
         })}>
-            <img src={props.champion.loadingImg} alt="" />
+            <img src={props.champion.splashImg} alt="" />
         </div>
         <div className={cx(css.PlayerName)}>
             <span>{props.displayName}</span>

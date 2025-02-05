@@ -2,19 +2,44 @@ import React from 'react';
 import cx from 'classnames';
 import Pick from "./Pick";
 import Ban from "./Ban";
-
 import css from './style/index.module.scss';
-
 import logo from '../assets/Logo_asetin.png';
 
 export default class Overlay extends React.Component {
     state = {
         currentAnimationState: css.TheAbsoluteVoid,
-        openingAnimationPlayed: false
+        openingAnimationPlayed: false,
+        audio: null,
+        musicList: []
     };
+    
+    componentDidMount() {
+        document.addEventListener("click", this.enableAudio);
+        fetch('./music-list.json')
+            .then(response => response.json())
+            .then(async musicList => await this.setState({musicList: musicList}))
+            .catch(error => console.error("Erreur de chargement de la musique :", error));
+    }
+    
+    enableAudio = () => {
+        if (!this.state.audio && this.state.musicList.length > 0 && this.state.openingAnimationPlayed) {
+            const randomMusic = this.state.musicList[Math.floor(Math.random() * this.state.musicList.length)];
+            const audio = new Audio(`./music/${randomMusic}`);
+            
+            audio.volume = 0.25;
+            audio.loop = true;
+            
+            audio.play().catch(err => console.error("Erreur de lecture audio:", err));
+            
+            this.setState({ audio });
+            
+            document.removeEventListener("click", this.enableAudio);
+        }
+    }
 
     playOpeningAnimation() {
         this.setState({openingAnimationPlayed: true});
+        
         setTimeout(() => {
             this.setState({currentAnimationState: css.AnimationHidden});
 
@@ -32,8 +57,6 @@ export default class Overlay extends React.Component {
         }, 500);
     }
     
-    
-
     render() {
         const { state, config } = this.props;
 
@@ -44,9 +67,8 @@ export default class Overlay extends React.Component {
         if (!state.champSelectActive && this.state.openingAnimationPlayed) {
             this.setState({openingAnimationPlayed: false});
             this.setState({currentAnimationState: css.TheAbsoluteVoid});
+            this.stopMusic();
         }
-
-        console.log(state);
         
         const renderBans = (teamState) => {
             const list = teamState.bans.slice(0, 3).map((ban, idx) => <Ban key={`ban-${idx}`} {...ban} />);
