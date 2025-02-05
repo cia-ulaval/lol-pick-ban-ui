@@ -67,7 +67,6 @@ export default class Overlay extends React.Component {
         if (!state.champSelectActive && this.state.openingAnimationPlayed) {
             this.setState({openingAnimationPlayed: false});
             this.setState({currentAnimationState: css.TheAbsoluteVoid});
-            this.stopMusic();
         }
         
         const renderBans = (teamState) => {
