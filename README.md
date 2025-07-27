@@ -20,7 +20,8 @@ It is most convincing to see the tool directly in action. Have you used it in an
 - Automatically fetches champion loading images, splash arts and square icons from datadragon, which means that if a new champion
 is released it will automatically fetch the correct resources.
 - Ready to use design templates:
-  - Europe (similar to the pick&ban UI used in the LEC)
+  - Default design template
+    - This is the default design template, which can be used for 1v1, 2v2 and 3v3 tournaments.
 - Easy feature toggle (when using design templates) for:
   - Show / hide scores (usable if it's not best of 1)
   - Show / hide coaches
@@ -93,7 +94,8 @@ Please refer to [CUSTOM_THEME](CUSTOM_THEME.md).
 
 ## Contributors / Maintainers
 - Development: Lara "Laraka" Bärtschi
-- Design (Europe): Elias "Elilift" Inäbnit
+- Design (Default): Elias "Elilift" Inäbnit & Modifications by William "Villy" B.L.
+- 
 
 ## Legal disclaimer
 lol-pick-ban-ui was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.

@@ -101,7 +101,7 @@ export default class Overlay extends React.Component {
         );
 
         return (
-            <div className={cx(css.Overlay, css.Europe, this.state.currentAnimationState)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>
+            <div className={cx(css.Overlay, css.Root, this.state.currentAnimationState)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>
                 {Object.keys(state).length === 0 && <div className={cx(css.infoBox)}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>

@@ -7,11 +7,20 @@
 
   --box-team-width: calc(5 * var(--box-width));
   --box-pick-height: 350px;
+  --box-pick-height-2v2: 350px;
+  --box-pick-height-3v3: 260px;
+  --pick-image-width: 33.33%;
+  --pick-image-width-2v2: 50%;
+  --pick-image-width-3v3: 100%;
+  --pick-image-crop: -2px;
+  --pick-image-crop-2v2: 2px;
+  --pick-image-crop-3v3: 16px;
+  --pick-image-position: -2px 4px;
+  --pick-image-position-2v2: -2px 4px;
+  --pick-image-position-3v3: -8px -8px;
   --box-ban-height: 59px;
   --box-ban-spacer: calc(var(--box-ban-height) / 2);
-
   --pick-name-height: 30px;
-  --pick-image-crop: 2px;
 
   --ban-image-crop: 6px;
   --summoner-spell-size: 40px;

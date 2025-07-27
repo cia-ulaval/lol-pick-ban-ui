@@ -5,11 +5,24 @@ body {
     // font-family: 'Nova Flat', sans-serif;
     font-family: Amarello;
 
-    //background: url("../../assets/background.jpg");
     background-color: green;
     background-size: cover;
 
     overflow: hidden;
+}
+
+.Root--2v2 {
+    --box-pick-height: var(--box-pick-height-2v2);
+    --pick-image-width: var(--pick-image-width-2v2);
+    --pick-image-crop: var(--pick-image-crop-2v2);
+    --pick-image-position: var(--pick-image-position-2v2);
+}
+
+.Root--3v3 {
+    --box-pick-height: var(--box-pick-height-3v3);
+    --pick-image-width: var(--pick-image-width-3v3);
+    --pick-image-crop: var(--pick-image-crop-3v3);
+    --pick-image-position: var(--pick-image-position-3v3);
 }
 
 * {
@@ -19,7 +32,7 @@ body {
 @import "./variables";
 @import "./animation";
 
-.Europe {
+.Root {
     .MiddleBox {
         position: absolute;
         color: white;

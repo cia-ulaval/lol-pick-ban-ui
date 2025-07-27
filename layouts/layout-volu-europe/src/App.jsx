@@ -4,6 +4,7 @@ import convertState from './convertState';
 import Error from './Error';
 
 function App() {
+    const preset  = null;
     const [globalState, setGlobalState] = useState({});
     const [config, setConfig] = useState({
         frontend: {
@@ -60,7 +61,7 @@ function App() {
 
     if (config) {
         return (
-            <div className="App">
+            <div className={preset ? `Root Root--${preset}` : 'Root'}>
                 <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
             </div>
         );

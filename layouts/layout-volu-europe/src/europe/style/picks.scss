@@ -7,7 +7,7 @@
 
   .Pick {
     position: relative;
-    width: 100%;
+    width: var(--pick-image-width);
     height: 100%;
     overflow: hidden;
     background-color: #0a0a0a;
@@ -55,7 +55,7 @@
         width: calc(100% + calc(-1 * var(--pick-image-crop)));
         height: 100%;
         object-fit: cover;
-        object-position: calc(1 * var(--pick-image-crop)) calc(-2 * var(--pick-image-crop));
+        object-position: var(--pick-image-position);
       }
 
       &.Active::before {
