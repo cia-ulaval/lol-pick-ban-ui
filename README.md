@@ -1,5 +1,9 @@
 # DISCLAIMER
-This is just a hacky modification of the regular Pick & Ban UI and is not actively maintained.
+This project is forked from the original project [lol-pick-ban-ui-3v3](https://github.com/RCVolus/lol-pick-ban-ui-3v3) with updated dependencies, some bug fixes and support for other formats (1v1, 2v2 and 3v3)
+This repository includes custom assets used for specific tournaments do not use these added assets without permission. 
+The original project was created by the Riot Community Volunteers (RCV) and modified by and independent developer and is not affiliated with Riot Games.
+
+
 
 # lol-champselect-ui
 UI to display the league of legends champion selection in esports tournaments.
