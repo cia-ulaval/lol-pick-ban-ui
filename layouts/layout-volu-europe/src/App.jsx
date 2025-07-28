@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Overlay from "./europe/Overlay";
+import Overlay from "./pages/Overlay";
 import convertState from './convertState';
 import Error from './Error';
 
