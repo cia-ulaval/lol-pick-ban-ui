@@ -12,10 +12,10 @@ body {
 }
 
 .Root--2v2 {
-    --box-pick-height: var(--box-pick-height-2v2);
-    --pick-image-width: var(--pick-image-width-2v2);
-    --pick-image-crop: var(--pick-image-crop-2v2);
-    --pick-image-position: var(--pick-image-position-2v2);
+    --box-pick-height: var(--box-pick-height-2v2) !important;
+    --pick-image-width: var(--pick-image-width-2v2) !important;
+    --pick-image-crop: var(--pick-image-crop-2v2) !important;
+    --pick-image-position: var(--pick-image-position-2v2) !important;
 }
 
 .Root--3v3 {

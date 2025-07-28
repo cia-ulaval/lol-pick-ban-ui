@@ -4,13 +4,13 @@ import convertState from './convertState';
 import Error from './Error';
 
 function App() {
-    const preset  = null;
     const [globalState, setGlobalState] = useState({});
     const [config, setConfig] = useState({
         frontend: {
             scoreEnabled: false,
             spellsEnabled: true,
             coachesEnabled: false,
+            format: "2v2",
             blueTeam: {
                 name: "Team Blue",
                 score: 0,
@@ -61,7 +61,7 @@ function App() {
 
     if (config) {
         return (
-            <div className={preset ? `Root Root--${preset}` : 'Root'}>
+            <div className={config.frontend.format === "2v2" || "3v3" ? `Root Root--${config.frontend.format}` : 'Root'}>
                 <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
             </div>
         );

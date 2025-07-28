@@ -59,6 +59,14 @@ export default class Overlay extends React.Component {
     
     render() {
         const { state, config } = this.props;
+        
+        let pickCount = 1;
+        
+        if(config.frontend.format === '2v2') {
+            pickCount = 2;
+        } else if(config.frontend.format === '3v3') {
+            pickCount = 3;
+        }
 
         if (state.champSelectActive && !this.state.openingAnimationPlayed) {
             this.playOpeningAnimation();
@@ -77,7 +85,7 @@ export default class Overlay extends React.Component {
         const renderTeam = (teamName, teamConfig, teamState) => (
             <div className={cx(css.Team, teamName)}>
                 <div className={cx(css.Picks)}>
-                    {teamState.picks.map((pick, idx) => idx < 1 ? <Pick key={`pick-${idx}`} config={this.props.config} {...pick} /> : '')}
+                    {teamState.picks.map((pick, idx) => idx < pickCount ? <Pick key={`pick-${idx}`} config={this.props.config} {...pick} /> : '')}
                 </div>
                 <div className={css.BansWrapper}>
                     <div className={cx(css.Bans, {[css.WithScore]: config.frontend.scoreEnabled})}>

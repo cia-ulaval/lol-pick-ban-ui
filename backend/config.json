@@ -3,6 +3,7 @@
     "scoreEnabled": false,
     "spellsEnabled": true,
     "coachesEnabled": false,
+    "format": "2v2",
     "blueTeam": {
       "name": "",
       "score": 0,

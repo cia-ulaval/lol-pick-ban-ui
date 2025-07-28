@@ -62,7 +62,7 @@ Please note: if you're looking for an easier installation, have a look at this p
 6. The backend should now launch on localhost:8999
 
 ### Installation of europe layout
-7. Open up the folder `layouts/layout-volu-europe`, keep the backend (terminal) open & running!
+7. Open up the folder `layouts/layout-default`, keep the backend (terminal) open & running!
 8. Also open the terminal here (like in step 3)
 9. Also issue `npm install` (like in step 4)
 10. Also start the frontend using `npm start` (like in step 5)
