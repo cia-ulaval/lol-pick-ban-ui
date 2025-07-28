@@ -1,2 +1,2 @@
-cd layouts\layout-volu-europe
+cd layouts\layout-default
 npm start
