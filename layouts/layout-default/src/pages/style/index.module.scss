@@ -1,4 +1,5 @@
 @import "./fonts";
+@import "./variables";
 
 body {
     // background: black;
@@ -11,25 +12,11 @@ body {
     overflow: hidden;
 }
 
-.Root--2v2 {
-    --box-pick-height: var(--box-pick-height-2v2) !important;
-    --pick-image-width: var(--pick-image-width-2v2) !important;
-    --pick-image-crop: var(--pick-image-crop-2v2) !important;
-    --pick-image-position: var(--pick-image-position-2v2) !important;
-}
-
-.Root--3v3 {
-    --box-pick-height: var(--box-pick-height-3v3);
-    --pick-image-width: var(--pick-image-width-3v3);
-    --pick-image-crop: var(--pick-image-crop-3v3);
-    --pick-image-position: var(--pick-image-position-3v3);
-}
-
 * {
     box-sizing: border-box;
 }
 
-@import "./variables";
+
 @import "./animation";
 
 .Root {
@@ -78,4 +65,18 @@ body {
 
     @import "./timer";
     @import "./team";
+}
+
+.Root--2v2 {
+    --box-pick-height: var(--box-pick-height-2v2) !important;
+    --pick-image-width: var(--pick-image-width-2v2) !important;
+    --pick-image-crop: var(--pick-image-crop-2v2) !important;
+    --pick-image-position: var(--pick-image-position-2v2) !important;
+}
+
+.Root--3v3 {
+    --box-pick-height: var(--box-pick-height-3v3) !important;
+    --pick-image-width: var(--pick-image-width-3v3) !important;
+    --pick-image-crop: var(--pick-image-crop-3v3) !important;
+    --pick-image-position: var(--pick-image-position-3v3) !important;
 }

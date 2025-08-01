@@ -116,7 +116,7 @@ export default class Overlay extends React.Component {
                     {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div> }
                     <div className={cx(css.MiddleBox)}>
                         <div className={cx(css.Logo)}>
-                            <img src={logo} alt="" />
+                            <img src={logo} alt="Logo" />
                         </div>
                         <div className={cx(css.Patch)}>
                             {state.state}
