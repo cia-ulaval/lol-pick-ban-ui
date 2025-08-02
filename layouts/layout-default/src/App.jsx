@@ -11,6 +11,7 @@ function App() {
             spellsEnabled: true,
             coachesEnabled: false,
             format: "2v2",
+            audioEnabled: true,
             blueTeam: {
                 name: "Team Blue",
                 score: 0,
@@ -61,7 +62,7 @@ function App() {
 
     if (config) {
         return (
-            <div className={config.frontend.format === "2v2" || "3v3" ? `Root Root--${config.frontend.format}` : 'Root'}>
+            <div>
                 <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
             </div>
         );

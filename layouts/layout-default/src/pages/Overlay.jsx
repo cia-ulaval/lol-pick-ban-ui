@@ -14,7 +14,9 @@ export default class Overlay extends React.Component {
     };
     
     componentDidMount() {
-        document.addEventListener("click", this.enableAudio);
+        if(this.props.config.frontend.audioEnabled) {
+            document.addEventListener("click", this.enableAudio);
+        }
         fetch('./music-list.json')
             .then(response => response.json())
             .then(async musicList => await this.setState({musicList: musicList}))
@@ -34,9 +36,35 @@ export default class Overlay extends React.Component {
             this.setState({ audio });
             
             document.removeEventListener("click", this.enableAudio);
+            document.addEventListener("click", this.stopAudio);
+            document.addEventListener("dblclick", this.changeSong);
         }
     }
-
+    
+    stopAudio = () => {
+        if (this.state.audio) {
+            this.state.audio.pause();
+        }
+        document.addEventListener("click", this.restartAudio);
+        document.removeEventListener("click", this.stopAudio);
+    }
+    
+    restartAudio = () => {
+        if (this.state.audio) {
+            this.state.audio.play();
+        }
+        document.removeEventListener("click", this.restartAudio);
+        document.addEventListener("click", this.stopAudio);
+    }
+    
+    changeSong = () => {
+        if (this.state.audio) {
+            this.state.audio.pause();
+            this.state.audio = null;
+        }
+        this.enableAudio();
+    }
+    
     playOpeningAnimation() {
         this.setState({openingAnimationPlayed: true});
         
@@ -109,7 +137,7 @@ export default class Overlay extends React.Component {
         );
 
         return (
-            <div className={cx(css.Overlay, css.Root, this.state.currentAnimationState)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>
+            <div className={cx(css.Overlay, ["2v2", "3v3"].includes(config.frontend.format) ? `${css[`Root--${config.frontend.format}`]}` : "", css.Root, this.state.currentAnimationState)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>
                 {Object.keys(state).length === 0 && <div className={cx(css.infoBox)}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>
