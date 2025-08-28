@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"npm run start --prefix backend\" \"cross-env HOST=0.0.0.0 PORT=3000 BROWSER=none npm run start --prefix layouts/layout-default\" \"npm run open:frontend\"",
+    "build:frontend": "npm run build --prefix layouts/layout-default",
+    "build:backend": "npm run build --prefix backend",
     "open:frontend": "wait-on http://localhost:3000 && start \"\" \"http://localhost:3000/?backend=ws://127.0.0.1:8999\""
   },
   "devDependencies": {
