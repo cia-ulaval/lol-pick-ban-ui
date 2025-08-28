@@ -33,42 +33,45 @@ function App() {
             setGlobalState(state.state);
             setConfig(state.state.config);
         });
-
+        
         Window.PB.on('heartbeat', hb => {
             console.info(`Got new config: ${JSON.stringify(hb.config)}`);
             setConfig(hb.config);
         });
-
+        
         try {
             Window.PB.start();
         } catch {
             setError('error: failed to read backend url query param. make sure you set ?backend=ws://[ip]:[port] as query parameter.')
         }
     }, []);
-
+    
     if (Window.PB.getQueryVariable('status') === '1') {
         const status = {
             backend: Window.PB.getQueryVariable('backend'),
             error: error,
             config: config,
-            state: { ...globalState, config: undefined, blueTeam: JSON.stringify(globalState.blueTeam), redTeam: JSON.stringify(globalState.redTeam) }
+            state: {
+                ...globalState,
+                config: undefined,
+                blueTeam: JSON.stringify(globalState.blueTeam),
+                redTeam: JSON.stringify(globalState.redTeam)
+            }
         }
-        return <Error message={`status: ${JSON.stringify(status, undefined, 4)}`} isStatus />
+        return <Error message={`status: ${JSON.stringify(status, undefined, 4)}`} isStatus/>
     }
-
+    
     if (error) {
-        return <Error message={error} />
+        return <Error message={error}/>
     }
-
+    
     if (config) {
         return (
-            <div>
-                <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
-            </div>
+            <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
         );
     } else {
         return (
-            <Error message='Unable to load configuration' />
+            <Error message='Unable to load configuration'/>
         )
     }
 }

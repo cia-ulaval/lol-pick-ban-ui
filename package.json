@@ -1,0 +1,14 @@
+{
+  "name": "lol-pick-ban-ui-1v1-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start --prefix backend\" \"cross-env HOST=0.0.0.0 PORT=3000 BROWSER=none npm run start --prefix layouts/layout-default\" \"npm run open:frontend\"",
+    "open:frontend": "wait-on http://localhost:3000 && start \"\" \"http://localhost:3000/?backend=ws://127.0.0.1:8999\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "wait-on": "^7.0.1"
+  }
+}
