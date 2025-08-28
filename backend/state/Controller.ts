@@ -5,6 +5,7 @@ import DataProviderService from "../data/DataProviderService";
 import State from "./State";
 import DataDragon from "../data/league/DataDragon";
 import logger from "../logging/logger";
+import {StateData} from "../types/dto";
 
 const log = logger("Controller");
 
@@ -53,35 +54,61 @@ export default class Controller extends EventEmitter {
       return;
     }
 
-    const cleanedData = convertState(newState, this.dataProvider, this.ddragon);
+    const stateData = convertState(newState, this.dataProvider, this.ddragon);
 
     const currentActionBefore = this.state.data.getCurrentAction();
 
-    this.state.newState(cleanedData);
+    this.state.newState(stateData);
 
-    // Get the current action
-    const currentActionAfter = this.state.data.getCurrentAction();
-
-    const isActionEqual = (firstAction: any, secondAction: any): boolean => {
-      if (firstAction.state !== secondAction.state) {
-        return false;
-      }
-      if (firstAction.state === "none" && secondAction.state === "none") {
-        return true;
-      }
-      if (firstAction.team !== secondAction.team) {
-        return false;
-      }
-      if (firstAction.num === secondAction.num) {
-        return true;
-      }
-      return false;
-    };
-
-    if (!isActionEqual(currentActionBefore, currentActionAfter)) {
-      const action = this.state.data.refreshAction(currentActionBefore);
-
-      this.state.newAction(action);
-    }
+    this.determineNextAction(currentActionBefore);
   }
+
+    private determineNextAction(currentActionBefore : any): void {
+        // Get the current action
+        const currentActionAfter = this.state.data.getCurrentAction();
+
+        const isActionEqual = (firstAction: any, secondAction: any): boolean => {
+            if (firstAction.state !== secondAction.state) {
+                return false;
+            }
+            if (firstAction.state === "none" && secondAction.state === "none") {
+                return true;
+            }
+            if (firstAction.team !== secondAction.team) {
+                return false;
+            }
+            if (firstAction.num === secondAction.num) {
+                return true;
+            }
+            return false;
+        };
+
+        if (!isActionEqual(currentActionBefore, currentActionAfter)) {
+            const action = this.state.data.refreshAction(currentActionBefore);
+
+            this.state.newAction(action);
+        }
+    }
+
+    applyNewStateFromServer(newState: StateData): void {
+        if (!this.state.data.champSelectActive && newState.champSelectActive) {
+            log.info("ChampSelect started!");
+            this.state.champselectStarted();
+        }
+        if (this.state.data.champSelectActive && !newState.champSelectActive) {
+            log.info("ChampSelect ended!");
+            this.state.champselectEnded();
+        }
+
+        // We can't do anything if champselect is not active!
+        if (!newState.champSelectActive) {
+            return;
+        }
+
+        const currentActionBefore = this.state.data.getCurrentAction();
+
+        this.state.newState(newState);
+
+        this.determineNextAction(currentActionBefore);
+    }
 }

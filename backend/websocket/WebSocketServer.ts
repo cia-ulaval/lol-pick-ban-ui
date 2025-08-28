@@ -11,6 +11,7 @@ import HeartbeatEvent from "../types/events/HeartbeatEvent";
 import ChampSelectStartedEvent from "../types/events/ChampSelectStartedEvent";
 import ChampSelectEndedEvent from "../types/events/ChampSelectEndedEvent";
 import NewActionEvent from "../types/events/NewActionEvent";
+import {sendToBackend} from "../Utils";
 
 const log = logger("websocket");
 
@@ -18,7 +19,6 @@ class WebSocketServer {
   server: ws.Server;
   state: State;
   clients: Array<WebSocket> = [];
-  exampleClients: Array<WebSocket> = [];
   heartbeatInterval?: NodeJS.Timeout;
   config: any;
 
@@ -33,7 +33,8 @@ class WebSocketServer {
       this.handleConnection(socket, request)
     );
 
-    state.on("stateUpdate", (newState: StateData) => {
+    state.on("stateUpdate", async (newState: StateData) => {
+      await sendToBackend(newState);
       newState.config = this.config;
       this.sendEvent(new NewStateEvent(newState));
     });

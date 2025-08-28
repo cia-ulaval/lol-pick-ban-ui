@@ -60,7 +60,7 @@ export default class Overlay extends React.Component {
     changeSong = () => {
         if (this.state.audio) {
             this.state.audio.pause();
-            this.state.audio = null;
+            this.setState({audio: null});
         }
         this.enableAudio();
     }

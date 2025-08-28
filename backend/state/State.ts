@@ -1,9 +1,11 @@
 import EventEmitter from 'events';
 import * as fs from 'fs';
+import logger from "../logging";
 import { Config, StateData, Team } from '../types/dto';
 
 class State extends EventEmitter {
   data: StateData;
+  log = logger("state");
 
   constructor() {
     super();

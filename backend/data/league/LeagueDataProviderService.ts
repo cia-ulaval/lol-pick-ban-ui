@@ -118,12 +118,11 @@ class LeagueDataProviderService extends EventEmitter
     return this.summoners.filter((summoner) => summoner.summonerId === id)[0];
   }
 
-  onLeagueConnected(e: ConnectionInfo): void {
+  async onLeagueConnected(e: ConnectionInfo): Promise<void> {
     log.info(`LeagueClient connected: ${JSON.stringify(e)}`);
     this.connectionInfo = e;
     this.requestConfig.username = this.connectionInfo.username;
     this.requestConfig.password = this.connectionInfo.password;
-
     this.emit('connected');
   }
 
