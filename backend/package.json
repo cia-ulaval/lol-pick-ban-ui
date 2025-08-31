@@ -9,7 +9,8 @@
     "lint": "eslint backend/**",
     "electron-dev": "npm run build && electron .",
     "ncc": "ncc build app.ts -o backend-build --source-map",
-    "package": "npm run ncc && pkg backend-build/index.js --targets node22-win-x64 --public --output PickBanUIBackend"
+    "package": "npm run ncc && pkg backend-build/index.js --targets node22-win-x64 --public --output PickBanUIBackend",
+    "release": "npm run package && release.bat"
   },
   "pkg": {
     "scripts": "dist/*.js",

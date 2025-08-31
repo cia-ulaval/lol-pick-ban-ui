@@ -4,3 +4,4 @@ dist/
 backend-build/
 cache/
 PickBanUiBackend.exe
+release/
