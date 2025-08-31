@@ -141,7 +141,6 @@ export default class Overlay extends React.Component {
                 {Object.keys(state).length === 0 && <div className={cx(css.infoBox)}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>
-                    {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div> }
                     <div className={cx(css.MiddleBox)}>
                         <div className={cx(css.Logo)}>
                             <img src={logo} alt="Logo" />
