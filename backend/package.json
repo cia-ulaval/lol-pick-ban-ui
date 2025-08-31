@@ -8,7 +8,14 @@
     "start": "npm run build && node backend-build/app.js",
     "lint": "eslint backend/**",
     "electron-dev": "npm run build && electron .",
-    "start:agent": "node backend-build/Agent.js"
+    "ncc": "ncc build app.ts -o backend-build --source-map",
+    "package": "npm run ncc && pkg backend-build/index.js --targets node22-win-x64 --public --output PickBanUIBackend"
+  },
+  "pkg": {
+    "scripts": "dist/*.js",
+    "assets": [
+      "config.json"
+    ]
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
@@ -31,10 +38,12 @@
     "@types/express": "^5.0.3",
     "@types/minimist": "^1.2.5",
     "@types/needle": "^3.3.0",
-    "@types/node": "24.1.0",
+    "@types/node": "24.3.0",
     "@types/ws": "^8.18.1",
+    "@yao-pkg/pkg": "^6.1.1",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
+    "@vercel/ncc": "^0.38.3",
     "eslint": "^9.32.0",
     "eslint-plugin-import": "^2.32.0"
   }
