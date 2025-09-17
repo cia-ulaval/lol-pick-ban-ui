@@ -8,13 +8,13 @@
     "blueTeam": {
       "name": "",
       "score": 0,
-      "coach": "Coach Blue",
+      "coach": "",
       "color": "rgb(0,151,196)"
     },
     "redTeam": {
       "name": "",
       "score": 0,
-      "coach": "Coach Red",
+      "coach": "",
       "color": "rgb(222,40,70)"
     },
     "patch": "9.19"

@@ -36,6 +36,7 @@ class WebSocketServer {
     state.on("stateUpdate", async (newState: StateData) => {
       await sendToBackend(newState);
       newState.config = this.config;
+      newState.leagueConnected = this.state.data.leagueConnected;
       this.sendEvent(new NewStateEvent(newState));
     });
     state.on("champSelectStarted", () =>

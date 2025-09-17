@@ -12,7 +12,7 @@ import DataDragon from './data/league/DataDragon';
 import Controller from './state/Controller';
 import GlobalContext from './GlobalContext';
 import './Console';
-import {CurrentState} from "./data/CurrentState";
+import dotenv from "dotenv";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -40,6 +40,7 @@ log.info('                                                   ');
 
 log.debug('Logging in debug mode!');
 log.info('Configuration: ' + JSON.stringify(GlobalContext.commandLine));
+dotenv.config();
 
 const state = new State();
 const ddragon = new DataDragon(state);
